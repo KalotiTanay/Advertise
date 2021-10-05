@@ -47,7 +47,7 @@ export class AppComponent {
     });
   }
 
-  addRowData(row_obj: { name: any; }){
+  addRowData(row_obj: { name: string; }){
     var d = new Date();
     this.dataSource.push({
       title:d.getTime(),
@@ -56,7 +56,7 @@ export class AppComponent {
     this.table.renderRows();
     
   }
-  updateRowData(row_obj){
+  updateRowData(row_obj: { title: number; name: string; }){
     this.dataSource = this.dataSource.filter((value,key)=>{
       if(value.title == row_obj.title){
         value.name = row_obj.name;
@@ -64,7 +64,7 @@ export class AppComponent {
       return true;
     });
   }
-  deleteRowData(row_obj){
+  deleteRowData(row_obj: { title: number; }){
     this.dataSource = this.dataSource.filter((value,key)=>{
       return value.title != row_obj.title;
     });
